@@ -3,12 +3,12 @@ import {Entity, model, property} from '@loopback/repository';
 @model()
 export class Mascota extends Entity {
   @property({
-    type: 'string',
+    type: 'number',
     id: true,
-    generated: false,
-    default: q,
+    generated: true,
+
   })
-  id?: string;
+  id?: number;
 
   @property({
     type: 'string',
@@ -24,14 +24,21 @@ export class Mascota extends Entity {
 
   @property({
     type: 'date',
+    required: true
   })
-  fecha_nacimiento?: string;
+  fecha_nacimiento: string;
 
   @property({
     type: 'string',
     required: true,
   })
   descripcion: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  imagen: string;
 
 
   constructor(data?: Partial<Mascota>) {
